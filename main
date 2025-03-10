@@ -1,16 +1,56 @@
 package oops;
-
+import java.util.*;
 public class Main {
 	public static void main(String[] args) {
-        CarRentalSystem rentalSystem = new CarRentalSystem();
+		        CarRentalSystem rentalSystem = new CarRentalSystem();
 
-        Car car1 = new Car("C001", "Toyota", "Camry", 60.0); // Different base price per day for each car
-        Car car2 = new Car("C002", "Honda", "Accord", 70.0);
-        Car car3 = new Car("C003", "Mahindra", "Thar", 150.0);
-        rentalSystem.addCar(car1);
-        rentalSystem.addCar(car2);
-        rentalSystem.addCar(car3);
+		        Car car1 = new Car("C001", "Toyota", "Camry", 60.0);
+		        LuxuryCar car2 = new LuxuryCar("C002", "BMW", "X5", 150.0, 50.0);
 
-        rentalSystem.menu();
-    }
-}
+		        Car car10 = new Car("C101", "Ford", "Mustang", 120.0);
+		        Car car11= new Car("C102", "Tesla", "Model 3", 90.0);
+		        Car car3 = new Car("C103", "BMW", "X5", 140.0);
+		        Car car4 = new Car("C104", "Audi", "Q7", 160.0);
+		        Car car5 = new Car("C105", "Mercedes", "GLC", 130.0);
+		        Car car6 = new Car("C106", "Hyundai", "Tucson", 80.0);
+		        Car car7 = new Car("C107", "Kia", "Seltos", 75.0);
+		        Car car8 = new Car("C108", "Nissan", "Altima", 85.0);
+		        Car car9 = new Car("C109", "Volkswagen", "Passat", 95.0);
+
+		        rentalSystem.addCar(car10);
+		        rentalSystem.addCar(car2);
+		        rentalSystem.addCar(car3);
+		        rentalSystem.addCar(car4);
+		        rentalSystem.addCar(car5);
+		        rentalSystem.addCar(car6);
+		        rentalSystem.addCar(car7);
+		        rentalSystem.addCar(car8);
+		        rentalSystem.addCar(car9);
+		        rentalSystem.addCar(car1);
+		        rentalSystem.addCar(car2);
+		        rentalSystem.addCar(car11);
+
+		        Scanner scanner = new Scanner(System.in);
+		        while (true) {
+		            System.out.println("\n1. Rent a Car\n2. Return a Car\n3. Exit");
+		            int choice = scanner.nextInt();
+		            scanner.nextLine(); 
+		            
+		            if (choice == 1) {
+		                rentalSystem.displayAvailableCars();
+		                System.out.print("Enter Car ID: ");
+		                String carId = scanner.nextLine();
+		                System.out.print("Enter rental days: ");
+		                int days = scanner.nextInt();
+		                rentalSystem.rentCar(carId, days);
+		            } else if (choice == 2) {
+		                System.out.print("Enter Car ID: ");
+		                String carId = scanner.nextLine();
+		                rentalSystem.returnCar(carId);
+		            } else {
+		                break;
+		            }
+		        }
+		        scanner.close();
+		    }
+		}
