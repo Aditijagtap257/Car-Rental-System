@@ -1,0 +1,16 @@
+package oops;
+
+class LuxuryCar extends Car {
+    private double luxuryTax;
+    
+    public LuxuryCar(String carId, String brand, String model, double basePricePerDay, double luxuryTax) {
+        super(carId, brand, model, basePricePerDay);
+        this.luxuryTax = luxuryTax;
+    }
+    
+    // Polymorphism: Overriding the method to add a luxury tax
+    @Override
+    public double calculatePrice(int rentalDays) {
+        return (super.calculatePrice(rentalDays) + luxuryTax);
+    }
+}
